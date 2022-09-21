@@ -15,5 +15,15 @@ export default interface ICard {
   type_line_tr: string
   power: string
   toughness: string
-  art_normal: string
+  loyalty: string
+  art: { normal: string }
+  card_faces: Array<{
+    name: string
+    type_line: string
+    oracle_text: string
+    power: string
+    toughness: string
+    loyalty: string
+    image_uris: { normal: string }
+  }>
 }

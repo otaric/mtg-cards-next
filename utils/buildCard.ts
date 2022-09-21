@@ -18,6 +18,8 @@ export default function buildCard(dadosCard: any): ICard {
     type_line_tr: dadosCard.printed_type_line,
     power: dadosCard.power,
     toughness: dadosCard.toughness,
-    art_normal: dadosCard.image_uris?.normal
+    loyalty: dadosCard.loyalty,
+    art: dadosCard.image_uris,
+    card_faces: dadosCard.card_faces
   }
 }

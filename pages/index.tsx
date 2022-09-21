@@ -25,8 +25,6 @@ export default function HomePage() {
     } else {
       setErro(resposta.status)
     }
-
-    /* pegar cardName e buscar os dados na API do scryfall depois jogar eles no setCardList*/
   }
 
   return (
@@ -63,9 +61,6 @@ export default function HomePage() {
       </div>
 
       <style jsx>{`
-        * {
-        }
-
         .app {
           margin: 0 auto;
           max-width: 1440px;
@@ -95,9 +90,9 @@ export default function HomePage() {
           justify-content: center;
         }
 
-        .erro{
+        .erro {
           font-family: 'Poppins', sans-serif;
-          padding-top:100px;
+          padding-top: 100px;
           display: flex;
           align-items: center;
           justify-content: center;

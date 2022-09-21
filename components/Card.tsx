@@ -1,17 +1,28 @@
 import ICard from '../interfaces/ICard'
-
-import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 interface Props {
   cardType: ICard
 }
 
 export default function Card({ cardType }: Props) {
+  const router = useRouter()
   return (
     <>
       <div className="card">
-        <div>
-          <img className="image" src={cardType.art_normal} alt="logo" />
+        <div
+          className="img-container"
+          onClick={() => router.push(`/info?id=${cardType.id}`)}
+        >
+          <img
+            className="image"
+            src={
+              cardType.card_faces === undefined
+                ? `${cardType.art?.normal}`
+                : `${cardType.card_faces[0]?.image_uris.normal}`
+            }
+            alt="logo"
+          />
         </div>
         <div className="card-info">
           <h2 className="card-name">{cardType.card_name}</h2>
@@ -20,7 +31,7 @@ export default function Card({ cardType }: Props) {
 
       <style jsx>{`
         .card {
-          max-width: 600px;
+          width: 400px;
           display: flex;
           padding: 20px;
           background-color: #fff;
@@ -30,13 +41,14 @@ export default function Card({ cardType }: Props) {
         }
 
         .image {
-          max-width: 200px;
+          width: 200px;
           border-radius: 10px;
+          cursor: pointer;
         }
 
         .card-name {
           font-family: 'Poppins', sans-serif;
-          max-width: 100px;
+          max-width: 150px;
           padding-left: 10px;
           font-weight: 700;
         }
