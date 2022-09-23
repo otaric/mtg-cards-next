@@ -48,20 +48,6 @@ export default function Form({
 
         <div className="radio-container">
           <label className="label">
-            {' '}
-            <input
-              className="radio"
-              type="radio"
-              value="pt"
-              checked={checked === 'pt'}
-              onChange={e => {
-                handleChecked(e.target.value)
-              }}
-            />
-            <span className="label-text">Port</span>
-          </label>
-          <label className="label">
-            {' '}
             <input
               className="radio"
               type="radio"
@@ -72,6 +58,18 @@ export default function Form({
               }}
             />
             <span className="label-text">Eng</span>
+          </label>
+          <label className="label">
+            <input
+              className="radio"
+              type="radio"
+              value="pt"
+              checked={checked === 'pt'}
+              onChange={e => {
+                handleChecked(e.target.value)
+              }}
+            />
+            <span className="label-text">Port</span>
           </label>
         </div>
       </form>
