@@ -4,6 +4,7 @@ import buildCard from '../utils/buildCard'
 import type ICard from '../interfaces/ICard'
 import CardTwoFace from '../components/faces/CardTwoFace'
 import CardOneFace from '../components/faces/CardOneFace'
+import Loading from '../components/Loading'
 
 export default function Info() {
   const router = useRouter()
@@ -27,14 +28,11 @@ export default function Info() {
       })
   }, [idCard])
 
-  if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No profile data</p>
-
+  if (isLoading) return <Loading />
+  if (!data) return <Loading />
   return data.card_faces === undefined ? (
     <CardOneFace data={data} />
   ) : (
-    <>
-      <CardTwoFace data={data} />
-    </>
+    <CardTwoFace data={data} />
   )
 }

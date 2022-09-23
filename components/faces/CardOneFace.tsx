@@ -1,17 +1,20 @@
 import ICard from '../../interfaces/ICard'
+import brake from '../../utils/brake'
 
 interface Props {
   data: ICard
 }
 
 export default function CardOneFace({ data }: Props) {
+  const textBrake =
+    data.description_tr === undefined
+      ? brake(data.description)
+      : brake(data.description_tr)
+      
   return (
     <>
       <div className="card-container">
-        <div
-          className="img-container"
-          onClick={() => console.log(data.card_faces[0]?.name)}
-        >
+        <div className="img-container">
           <img
             src={data.art?.normal}
             alt={data.card_name}
@@ -24,8 +27,11 @@ export default function CardOneFace({ data }: Props) {
               ? `${data.card_name}`
               : `${data.card_name_tr}`}
           </h2>
+
           <p>{data.type_line}</p>
-          <p>{data.description}</p>
+          {textBrake.map(frase => {
+            return <p key={frase}>{frase}</p>
+          })}
 
           <br />
           {data.type_line?.indexOf('Creature') != -1 ? (
@@ -43,7 +49,7 @@ export default function CardOneFace({ data }: Props) {
       <style jsx>{`
         .card-container {
           font-family: 'Poppins', sans-serif;
-          margin-top: 100px;
+          margin-top: 80px;
           display: flex;
           flex-wrap: wrap;
           justify-content: center;

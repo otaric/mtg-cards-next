@@ -25,7 +25,11 @@ export default function Card({ cardType }: Props) {
           />
         </div>
         <div className="card-info">
-          <h2 className="card-name">{cardType.card_name}</h2>
+          <h2 className="card-name">
+            {cardType.card_name_tr === undefined
+              ? `${cardType.card_name}`
+              : `${cardType.card_name_tr}`}
+          </h2>
         </div>
       </div>
 
