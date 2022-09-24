@@ -9,12 +9,21 @@ import Loading from '../components/Loading'
 export default function Info() {
   const router = useRouter()
   const idCard = router.query.id
-
   const [data, setData]: [
     ICard | undefined,
     React.Dispatch<React.SetStateAction<ICard | undefined>>
   ] = React.useState()
   const [isLoading, setLoading] = React.useState(false)
+  const [symbology, setSymbology] = React.useState([])
+
+  React.useEffect(() => {
+    setLoading(true)
+    fetch(`https://api.scryfall.com/symbology`)
+      .then(res => res.json())
+      .then(data => {
+        setSymbology(data.data)
+      })
+  }, [idCard])
 
   React.useEffect(() => {
     setLoading(true)
@@ -22,7 +31,6 @@ export default function Info() {
       .then(res => res.json())
       .then(data => {
         const card = buildCard(data)
-        console.log(card)
         setData(card)
         setLoading(false)
       })
@@ -31,8 +39,8 @@ export default function Info() {
   if (isLoading) return <Loading />
   if (!data) return <Loading />
   return data.card_faces === undefined ? (
-    <CardOneFace data={data} />
+    <CardOneFace data={data} symbology={symbology} />
   ) : (
-    <CardTwoFace data={data} />
+    <CardTwoFace data={data} symbology={symbology} />
   )
 }

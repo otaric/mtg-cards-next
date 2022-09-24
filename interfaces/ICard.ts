@@ -19,8 +19,11 @@ export default interface ICard {
   art: { normal: string }
   card_faces: Array<{
     name: string
+    printed_name: string
     type_line: string
+    printed_type_line: string
     oracle_text: string
+    printed_text: string
     power: string
     toughness: string
     loyalty: string

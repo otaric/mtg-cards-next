@@ -1,13 +1,25 @@
 import ICard from '../../interfaces/ICard'
 import brake from '../../utils/brake'
+import turnInIcon from '../../utils/turnInIcon'
 
 interface Props {
   data: ICard
+  symbology: never[]
 }
 
-export default function CardTwoFace({ data }: Props) {
+export default function CardTwoFace({ data, symbology }: Props) {
   const textBrakeFaceOne = brake(data.card_faces[0].oracle_text)
   const textBrakeFaceTwo = brake(data.card_faces[1].oracle_text)
+
+  /*  const textBrakeFaceOne =
+    data.card_faces[0].printed_text === undefined
+      ? brake(data.card_faces[0].oracle_text)
+      : brake(data.card_faces[0].printed_text)
+
+  const textBrakeFaceTwo =
+    data.card_faces[1].printed_text === undefined
+      ? brake(data.card_faces[1].oracle_text)
+      : brake(data.card_faces[1].printed_text) */
 
   return (
     <>
@@ -24,8 +36,13 @@ export default function CardTwoFace({ data }: Props) {
           <h2 className="card-name">{data.card_faces[0].name}</h2>
           <p>{data.card_faces[0].type_line}</p>
 
-          {textBrakeFaceOne.map(frase => {
-            return <p key={frase}>{frase}</p>
+          {textBrakeFaceOne?.map(frase => {
+            const fraseWithIcons = turnInIcon(frase, symbology)
+            return (
+              <div className="description" key={Math.random()}>
+                <p>{fraseWithIcons}</p>
+              </div>
+            )
           })}
 
           <br />
@@ -47,8 +64,13 @@ export default function CardTwoFace({ data }: Props) {
           <h2 className="card-name">{data.card_faces[1].name}</h2>
           <p>{data.card_faces[1].type_line}</p>
 
-          {textBrakeFaceTwo.map(frase => {
-            return <p key={frase}>{frase}</p>
+          {textBrakeFaceTwo?.map(frase => {
+            const fraseWithIcons = turnInIcon(frase, symbology)
+            return (
+              <div className="description" key={Math.random()}>
+                <p>{fraseWithIcons}</p>
+              </div>
+            )
           })}
 
           <br />

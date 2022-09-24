@@ -1,16 +1,20 @@
 import ICard from '../../interfaces/ICard'
 import brake from '../../utils/brake'
+import turnInIcon from '../../utils/turnInIcon'
 
 interface Props {
   data: ICard
+  symbology: never[]
 }
 
-export default function CardOneFace({ data }: Props) {
-  const textBrake =
+export default function CardOneFace({ data, symbology }: Props) {
+  const textBrake = brake(data.description)
+
+  /* const textBrake =
     data.description_tr === undefined
       ? brake(data.description)
-      : brake(data.description_tr)
-      
+      : brake(data.description_tr) */
+
   return (
     <>
       <div className="card-container">
@@ -29,8 +33,15 @@ export default function CardOneFace({ data }: Props) {
           </h2>
 
           <p>{data.type_line}</p>
-          {textBrake.map(frase => {
-            return <p key={frase}>{frase}</p>
+
+          {textBrake?.map(frase => {
+            const fraseWithIcons = turnInIcon(frase, symbology)
+
+            return (
+              <div key={Math.random()}>
+                <p>{fraseWithIcons}</p>
+              </div>
+            )
           })}
 
           <br />
