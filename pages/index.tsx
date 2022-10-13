@@ -2,6 +2,7 @@ import React from 'react'
 import Form from '../components/Form'
 import Card from '../components/Card'
 import buildCard from '../utils/buildCard'
+import Head from 'next/head'
 
 export default function HomePage() {
   const [cardName, setCardName] = React.useState('')
@@ -29,6 +30,10 @@ export default function HomePage() {
 
   return (
     <>
+      <Head>
+        <title>MTG CARDS NEXT</title>
+        <link rel="shortcut icon" href="/images/logo.svg" />
+      </Head>
       <div className="app">
         <div className="container">
           <h1 className="titulo">Search MTG cards!</h1>

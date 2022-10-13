@@ -5,6 +5,7 @@ import type ICard from '../interfaces/ICard'
 import CardTwoFace from '../components/faces/CardTwoFace'
 import CardOneFace from '../components/faces/CardOneFace'
 import Loading from '../components/Loading'
+import Head from 'next/head'
 
 export default function Info() {
   const router = useRouter()
@@ -39,8 +40,20 @@ export default function Info() {
   if (isLoading) return <Loading />
   if (!data) return <Loading />
   return data.card_faces === undefined ? (
-    <CardOneFace data={data} symbology={symbology} />
+    <>
+      <Head>
+        <title>{data.card_name}</title>
+        <link rel="shortcut icon" href="/images/logo.svg" />
+      </Head>
+      <CardOneFace data={data} symbology={symbology} />
+    </>
   ) : (
-    <CardTwoFace data={data} symbology={symbology} />
+    <>
+      <Head>
+        <title>{data.card_name}</title>
+        <link rel="shortcut icon" href="/images/logo.svg" />
+      </Head>
+      <CardTwoFace data={data} symbology={symbology} />
+    </>
   )
 }
