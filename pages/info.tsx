@@ -23,7 +23,7 @@ export default function Info() {
       .then(data => {
         setSymbology(data.data)
       })
-  }, [idCard])
+  }, [])
 
   React.useEffect(() => {
     setLoading(true)

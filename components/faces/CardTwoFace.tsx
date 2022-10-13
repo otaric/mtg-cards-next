@@ -1,5 +1,5 @@
 import ICard from '../../interfaces/ICard'
-import brake from '../../utils/brake'
+import breake from '../../utils/breake'
 import turnInIcon from '../../utils/turnInIcon'
 
 interface Props {
@@ -8,15 +8,15 @@ interface Props {
 }
 
 export default function CardTwoFace({ data, symbology }: Props) {
-  const textBrakeFaceOne = brake(data.card_faces[0].oracle_text)
-  const textBrakeFaceTwo = brake(data.card_faces[1].oracle_text)
+  const textBreakFaceOne = breake(data.card_faces[0].oracle_text)
+  const textBreakFaceTwo = breake(data.card_faces[1].oracle_text)
 
-  /*  const textBrakeFaceOne =
+  /*  const textBreakFaceOne =
     data.card_faces[0].printed_text === undefined
       ? brake(data.card_faces[0].oracle_text)
       : brake(data.card_faces[0].printed_text)
 
-  const textBrakeFaceTwo =
+  const textBreakFaceTwo =
     data.card_faces[1].printed_text === undefined
       ? brake(data.card_faces[1].oracle_text)
       : brake(data.card_faces[1].printed_text) */
@@ -36,10 +36,10 @@ export default function CardTwoFace({ data, symbology }: Props) {
           <h2 className="card-name">{data.card_faces[0].name}</h2>
           <p>{data.card_faces[0].type_line}</p>
 
-          {textBrakeFaceOne?.map(frase => {
+          {textBreakFaceOne?.map(frase => {
             const fraseWithIcons = turnInIcon(frase, symbology)
             return (
-              <div className="description" key={Math.random()}>
+              <div key={Math.random()}>
                 <p>{fraseWithIcons}</p>
               </div>
             )
@@ -64,10 +64,10 @@ export default function CardTwoFace({ data, symbology }: Props) {
           <h2 className="card-name">{data.card_faces[1].name}</h2>
           <p>{data.card_faces[1].type_line}</p>
 
-          {textBrakeFaceTwo?.map(frase => {
+          {textBreakFaceTwo?.map(frase => {
             const fraseWithIcons = turnInIcon(frase, symbology)
             return (
-              <div className="description" key={Math.random()}>
+              <div key={Math.random()}>
                 <p>{fraseWithIcons}</p>
               </div>
             )
