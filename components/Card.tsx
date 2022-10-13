@@ -19,7 +19,7 @@ export default function Card({ cardType }: Props) {
             src={
               cardType.card_faces === undefined
                 ? `${cardType.art?.normal}`
-                : `${cardType.card_faces[0]?.image_uris.normal}`
+                : `${cardType.card_faces[0]?.image_uris?.normal}`
             }
             alt="logo"
           />
