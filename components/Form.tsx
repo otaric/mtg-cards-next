@@ -146,15 +146,15 @@ export default function Form({
           padding: 0 5px;
         }
 
-        @media screen and (max-width: 360px) {
+        @media screen and (max-width: 400px) {
           .input {
-            max-width: 200px;
+            max-width: 250px;
           }
         }
 
         @media screen and (max-width: 600px) {
           .input {
-            width: 300px;
+            width: 350px;
           }
         }
         

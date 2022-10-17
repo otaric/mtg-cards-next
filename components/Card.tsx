@@ -56,6 +56,20 @@ export default function Card({ cardType }: Props) {
           padding-left: 10px;
           font-weight: 700;
         }
+
+        @media screen and (max-width: 400px) {
+          .card {
+            width: 300px;
+            justify-conent: center;
+            align-items: center;
+            gap: 10px;
+            flex-direction: column-reverse;
+          }
+
+          .image {
+            width: 180px;
+          }
+        }
       `}</style>
     </>
   )

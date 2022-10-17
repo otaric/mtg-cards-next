@@ -78,10 +78,29 @@ export default function CardOneFace({ data, symbology }: Props) {
           flex-direction: column;
           gap: 10px;
           max-width: 400px;
+          padding: 0 15px;
         }
 
         .stats {
           text-align: end;
+        }
+
+        @media screen and (max-width: 400px) {
+          .card-container {
+            gap: 50px;
+          }
+          .card-img {
+            height: 310px;
+          }
+        }
+
+        @media screen and (max-width: 810px) {
+          .card-container {
+            gap: 50px;
+          }
+          .card-img {
+            height: 310px;
+          }
         }
       `}</style>
     </>

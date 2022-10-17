@@ -59,7 +59,7 @@ export default function CardTwoFace({ data, symbology }: Props) {
       </div>
 
       {/* Face 2 */}
-      <div className="card-container">
+      <div className="card-container face-2">
         <div className="info-container">
           <h2 className="card-name">{data.card_faces[1].name}</h2>
           <p>{data.card_faces[1].type_line}</p>
@@ -97,7 +97,6 @@ export default function CardTwoFace({ data, symbology }: Props) {
       <style jsx>{`
         .card-container {
           font-family: 'Poppins', sans-serif;
-
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
@@ -119,10 +118,42 @@ export default function CardTwoFace({ data, symbology }: Props) {
           flex-direction: column;
           gap: 10px;
           max-width: 400px;
+          padding: 0 15px;
         }
 
         .stats {
           text-align: end;
+        }
+
+        @media screen and (max-width: 400px) {
+          .card-container {
+            gap: 50px;
+          }
+          .card-img {
+            height: 310px;
+          }
+        }
+
+        @media screen and (max-width: 672px) {
+          .face-1 {
+            padding-bottom: 40px;
+            border-bottom: 1px solid black;
+          }
+
+          .face-2 {
+            margin: 40px 0;
+            flex-direction: column-reverse;
+            align-items: center;
+          }
+        }
+
+        @media screen and (max-width: 810px) {
+          .card-container {
+            gap: 50px;
+          }
+          .card-img {
+            height: 310px;
+          }
         }
       `}</style>
     </>
