@@ -145,6 +145,19 @@ export default function Form({
         .label-text {
           padding: 0 5px;
         }
+
+        @media screen and (max-width: 360px) {
+          .input {
+            max-width: 200px;
+          }
+        }
+
+        @media screen and (max-width: 600px) {
+          .input {
+            width: 300px;
+          }
+        }
+        
       `}</style>
     </>
   )

@@ -103,6 +103,21 @@ export default function HomePage() {
           justify-content: center;
           color: #ff003e;
         }
+
+        @media screen and (max-width: 360px) {
+          .titulo {
+            font-size: 1.5rem;
+          }
+        }
+
+        @media screen and (max-width: 910px) {
+          .titulo {
+            padding-bottom: 10px;
+          }
+          .container {
+            padding-top: 30px;
+          }
+        }
       `}</style>
     </>
   )
